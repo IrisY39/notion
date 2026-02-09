@@ -17,6 +17,6 @@ COPY --from=builder /usr/local/bin/notion-mcp-server /usr/local/bin/notion-mcp-s
 
 ENV OPENAPI_MCP_HEADERS="{}"
 
-ENV PORT=3000            # 明写 3000
-EXPOSE 3000
+ENV PORT=8080            # 明写 3000
+EXPOSE 8080
 ENTRYPOINT ["notion-mcp-server", "--port", "3000", "--enable-stream"]
