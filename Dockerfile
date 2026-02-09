@@ -20,5 +20,3 @@ ENV OPENAPI_MCP_HEADERS="{}"
 ENV PORT=3000            # 明写 3000
 EXPOSE 3000
 ENTRYPOINT ["notion-mcp-server", "--port", "3000", "--enable-stream"]
-CMD ["sh", "-c", "echo 'PORT='$PORT; echo 'NOTION_TOKEN='${NOTION_TOKEN:+set}; \
-  sleep 1; notion-mcp-server --port ${PORT:-3000} --enable-stream || sleep 3600"]
