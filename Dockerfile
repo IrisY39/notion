@@ -17,10 +17,6 @@ COPY --from=builder /usr/local/bin/notion-mcp-server /usr/local/bin/notion-mcp-s
 
 ENV OPENAPI_MCP_HEADERS="{}"
 
-# 进程默认监听 3000，Railway 注入 $PORT 时会覆盖
-ENV PORT=3000
+ENV PORT=3000            # 明写 3000
 EXPOSE 3000
-
-# 启动：始终用 $PORT；本地 docker run 没 $PORT 时退回 3000
-ENTRYPOINT ["sh", "-c", "notion-mcp-server --port ${PORT:-3000} --enable-stream"]
-
+ENTRYPOINT ["notion-mcp-server", "--port", "3000", "--enable-stream"]
