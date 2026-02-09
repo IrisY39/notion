@@ -16,7 +16,8 @@ COPY --from=builder /usr/local/lib/node_modules/@notionhq/notion-mcp-server /usr
 COPY --from=builder /usr/local/bin/notion-mcp-server /usr/local/bin/notion-mcp-server
 
 ENV OPENAPI_MCP_HEADERS="{}"
-ENV PORT=3000
-EXPOSE ${PORT}
 
-ENTRYPOINT ["notion-mcp-server", "--port", "3000", "--enable-stream"]
+EXPOSE 3000    # ← 用字面量
+
+ENTRYPOINT ["sh", "-c", "notion-mcp-server --port ${PORT:-3000} --enable-stream"]
+
